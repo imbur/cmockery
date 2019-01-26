@@ -3,6 +3,7 @@
 Cmockery is a lightweight library that is used to author C unit tests.
 
 Contents
+ * [Building](#Building)
  * [Motivation](#Motivation)
  * [Overview](#Overview)
  * [Test Execution](#TestExecution)
@@ -16,6 +17,25 @@ Contents
   * [Checking Parameters](#CheckingParameters)
  * [Test State](#TestState)
  * [Example](#Example)
+
+## Building
+
+To compile the Cmockery library and example applications on Linux, run:
+
+```
+$ ./configure
+$ make
+```
+
+To compile on Windows, run:
+
+```
+> vsvars.bat
+> cd windows
+> nmake
+```
+
+This code has been tested on Linux (Ubuntu) and Windows using VC++7 and VC++8.
 
 ## <a name="Motivation"></a>Motivation
 
@@ -61,8 +81,8 @@ module can be conditionally compiled for tests.
 ## <a name="TestExecution"></a>Test Execution
 
 Cmockery unit test cases are functions with the signature
-*void function(void `*``*`state)*.  Cmockery test applications initialize a
-table with test case function pointers using *unit_test`*`()* macros.  This
+*void function(void &#42;&#42;state)*.  Cmockery test applications initialize a
+table with test case function pointers using *unit_test&#42;()* macros.  This
 table is then passed to the *run_tests()* macro to execute the tests.
 
 *run_tests()* sets up the appropriate exception / signal handlers and
@@ -275,7 +295,7 @@ tested by Cmockery should replace calls to *malloc()*, *calloc()* and
 *test_free()* respectively.  Each time a block is deallocated using
 *test_free()* it is checked for corruption, if a corrupt block is found
 a [test failure](#FailureConditions) is signalled.  All blocks
-allocated using the *test_`*`()* allocation functions are tracked by the
+allocated using the *test_&#42;()* allocation functions are tracked by the
 Cmockery library.  When a test completes if any allocated blocks (memory leaks)
 remain they are reported and a test failure is signalled.
 
